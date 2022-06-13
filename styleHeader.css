@@ -1,6 +1,7 @@
 header{
     z-index: 2;
     position: fixed;
+    
     height: 10vh;
     width: 100vw;
     background-color: bisque;

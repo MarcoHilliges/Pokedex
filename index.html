@@ -13,10 +13,15 @@
 </head>
 <body onload="loadAllPokemons()">
     <header></header>
-    <main>
-        <div id="showPokemonMainArea"></div>
-        <div id="bigCardArea"></div>
+    <main id="showPokemonMainArea">
+        
+        
     </main>
+    <div id="bigCardArea" class="d-none">
+        <div id="pokemonName"></div>
+        <img id="pokemonImg" src="" alt="">
+        <img id="closeBigCard" onclick="closeBigCard()" src="" alt="X">
+    </div>
     <footer></footer>
 </body>
 </html>
