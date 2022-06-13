@@ -13,15 +13,20 @@ async function loadAllPokemons(){
 
 function showPokemonMiniCards(){
     let pokemonList = responseAPI_JSON['results'];
-    document.getElementById('showPokemonArea').innerHTML = `<h1>Es sind derzeit ${pokemonList.length} Pokémon bekannt</h1>`
-
-    for (let numbers = 0; numbers < pokemonList.length; numbers++) {
+    document.getElementById('showPokemonMainArea').innerHTML = 
+        `<h1>Es sind derzeit ${pokemonList.length} Pokémon bekannt</h1>
+         <div id="showPokemonMainAreaContent"></div>
+        `
+                                    // pokemonList.length
+    for (let numbers = 0; numbers < pokemonList.length; numbers++) {      
         const number = pokemonList[numbers];
         
-        document.getElementById('showPokemonArea').innerHTML += 
+        document.getElementById('showPokemonMainAreaContent').innerHTML += 
             /*html*/`
-            <div>${numbers+1} ${number['name']}</div>
-            
+            <div onclick="showBigCard(${number['url']})"
+                 class="miniCard">
+                <div>${numbers+1}</div><div> ${number['name']}</div>
+            </div>
             `
     }
 }
@@ -34,3 +39,7 @@ function showPokemonMiniCards(){
 // 'bulbasaur'
 // responseAPI_JSON['results'][0]['url']
 // 'https://pokeapi.co/api/v2/pokemon/1/'
+
+function showBigCard(url){
+
+}

@@ -1,0 +1,31 @@
+main{
+    position: relative;
+    top:10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    
+}
+
+#showPokemonMainAreaContent{
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 60px;
+    
+}
+
+.miniCard{
+    display: flex;
+    padding: 10px 20px;
+    border: 1px solid lightgray;
+    border-radius: 10px;
+    margin: 10px;
+}
+
+#bigCardArea{
+    position: fixed;
+    width: 100px;
+    height: 100px;
+    background-color: aqua;
+}
