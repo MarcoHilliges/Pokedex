@@ -1,13 +1,20 @@
+let language = 'de';
+
 let responseAPI_JSON = [];
 
 
 async function loadAllPokemons(){
     let url = 'https://pokeapi.co/api/v2/pokemon/?offset=0&limit=10000%22'
-    let responseAsText = await fetch(url);
-    responseAPI_JSON = await responseAsText.json();
+    responseAPI_JSON = await loadAPI(url);
 
     console.log(responseAPI_JSON);
     showPokemonMiniCards();
+}
+
+
+async function loadAPI(url){
+    let responseAsText = await fetch(url);
+    return responseJSON = await responseAsText.json();
 }
 
 
@@ -20,36 +27,58 @@ async function showPokemonMiniCards(){
                                     // pokemonList.length
     for (let numbers = 0; numbers < 100; numbers++) {      
         const number = pokemonList[numbers];
-        
-        let responseSinglePokemonAsText = await fetch(number['url']);
-        let responseSinglePokemonAPI_JSON = await responseSinglePokemonAsText.json();
+                
+        let responseSinglePokemonAPI_JSON = await loadAPI(number['url']);
+
+        let urlLanguagePack = responseSinglePokemonAPI_JSON['species']['url'];
+
+        let languagePack = await loadAPI(urlLanguagePack);
+
+        let pokemonName = getPokemonName(languagePack);
+        let pokemonId = getPokemonId(languagePack);
+        let pokemonBgColor = getPokemonBgColor(languagePack);
+
 
         document.getElementById('showPokemonMainAreaContent').innerHTML += 
             /*html*/`
             <div onclick="showBigCard('${number['url']}')"
-                 class="miniCard">
-                <div>${numbers+1}</div>
-                <div> ${number['name']}</div>
+                 class="miniCard" style="background-color: ${pokemonBgColor}">
+                
+                <div> ${pokemonName}</div>
+
+                <div>Id: ${pokemonId}</div>
                 <img src="${responseSinglePokemonAPI_JSON['sprites']['other']['home']['front_default']}" alt="">
+
 
             </div>
             `
     }
 }
 
-// responseAPI_JSON['results']['length']
-// 1126
-// responseAPI_JSON['results'][0]
-// {name: 'bulbasaur', url: 'https://pokeapi.co/api/v2/pokemon/1/'}
-// responseAPI_JSON['results'][0]['name']
-// 'bulbasaur'
-// responseAPI_JSON['results'][0]['url']
-// 'https://pokeapi.co/api/v2/pokemon/1/'
 
+function getPokemonName(languagePackSinglePokemonAPI_JSON){
+    for (var i = 0, length = languagePackSinglePokemonAPI_JSON['names'].length; i < length; i++) {
+        if (languagePackSinglePokemonAPI_JSON['names'][i].language.name == language) {
+            pokemonName = languagePackSinglePokemonAPI_JSON['names'][i].name;
+        }
+    }
+    return pokemonName;
+}
+
+
+function getPokemonId(languagePackSinglePokemonAPI_JSON){
+    return pokemonId = languagePackSinglePokemonAPI_JSON['id'];
+}
+
+
+function getPokemonBgColor(languagePackSinglePokemonAPI_JSON){
+    return pokemonBgColor = languagePackSinglePokemonAPI_JSON['color']['name'];
+}
 
 
 function showBigCard(url){
     loadSinglePokemon(url);
+  
     document.getElementById('bigCardArea').classList.remove('d-none');
 }
 
@@ -60,22 +89,50 @@ function closeBigCard(){
 
 
 async function loadSinglePokemon(url){
-    // let url = 'https://pokeapi.co/api/v2/pokemon/?offset=0&limit=10000%22'
-    let responseAsText = await fetch(url);
-    let responseSinglePokemonAPI_JSON = await responseAsText.json();
-
-    console.log(responseSinglePokemonAPI_JSON);
-    let singlePokemon = responseSinglePokemonAPI_JSON;
     
-    document.getElementById('pokemonName').innerHTML = singlePokemon['name'];
-    document.getElementById('pokemonImg').src = singlePokemon['sprites']['other']['home']['front_default']
+    let responseAsText = await fetch(url);
+    responseSinglePokemonAPI_JSON = await responseAsText.json();
 
+    loadLanguageSinglePokemon();
+    console.log(responseSinglePokemonAPI_JSON);
     
 }
 
-// other:
-// dream_world: {front_default: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/1.svg', front_female: null}
-// home: {front_default: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/1.png', front_female: null, front_shiny: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/shiny/1.png', front_shiny_female: null}
-// official-artwork: {front_default: 'https://raw.githubusercontent.com/PokeAPI/sprites/…ster/sprites/pokemon/other/official-artwork/1.png'}
+async function loadLanguageSinglePokemon(){
+    let url = responseSinglePokemonAPI_JSON['species']['url'];
+    let responseAsText = await fetch(url);
+    languagePackSinglePokemonAPI_JSON = await responseAsText.json();
 
+    console.log(languagePackSinglePokemonAPI_JSON);
+    showBigCardContent();
+}
+
+function showBigCardContent(){
+    let singlePokemon = responseSinglePokemonAPI_JSON;
+    
+    showBigCardContent_name();
+    
+    document.getElementById('pokemonImg').src = singlePokemon['sprites']['other']['home']['front_default']
+}
+    
+function showBigCardContent_name(){
+    
+    for (var i = 0, length = languagePackSinglePokemonAPI_JSON['names'].length; i < length; i++) {
+        if (languagePackSinglePokemonAPI_JSON['names'][i].language.name == language) {
+            pokemonName = languagePackSinglePokemonAPI_JSON['names'][i].name;
+        }
+    }
+    document.getElementById('pokemonName').innerHTML = pokemonName;
+}
+
+
+function test(){
+
+    for (var i = 0, length = languagePackSinglePokemonAPI_JSON['names'].length; i < length; i++) {
+        if (languagePackSinglePokemonAPI_JSON['names'][i].language.name == language) {
+            console.log(languagePackSinglePokemonAPI_JSON['names'][i].name);
+        }
+    }
+
+}
 
