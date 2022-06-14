@@ -11,20 +11,32 @@
     <script src="./script.js"></script>
     <script src="./templates.js"></script>
     <title>Pokédex</title>
+
+    <!-- Bootstrap CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+
+    
 </head>
 <body onload="loadAllPokemons()">
     <header></header>
-    <main id="showPokemonMainArea">
-        
-        
-    </main>
+
+    <main id="showPokemonMainArea"></main>
+    
     <div id="bigCardArea" class="d-none">
         <div id="pokemonName"></div>
-        <div id="pokemonId"></div>
         <div id="shortDescription"></div>
+        <div id="pokemonId"></div>
+        <div id="pokemonClass"></div>
         <img id="pokemonImg" src="" alt="">
+        <div id="pokemonStats"></div>
+        
+
+        <div id="description"></div>
+        
         <img id="closeBigCard" onclick="closeBigCard()" src="" alt="X">
     </div>
+
+    
     <footer></footer>
 </body>
 </html>

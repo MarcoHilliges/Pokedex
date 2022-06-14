@@ -1,3 +1,15 @@
 Alle Pokemon
 https://pokeapi.co/api/v2/pokemon/?offset=0&limit=1000%22
 
+stats.
+    base_stat 
+    stat.name.hp
+              attack
+              defense
+              special-attack
+              special-defense
+              speed
+
+<div class="progress">
+  <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%"></div>
+</div>

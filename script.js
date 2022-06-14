@@ -1,14 +1,14 @@
 let language = 'de';
-
 let pokemonList = [];
-
+let drawStartNumber = 0;
+let drawEndNumber = 100;
 
 async function loadAllPokemons(){
-    let url = 'https://pokeapi.co/api/v2/pokemon/?offset=0&limit=10000%22'
+    let url = 'https://pokeapi.co/api/v2/pokemon?limit=100000&offset=0'
     let responseAPI_JSON = await loadAPI(url);
     pokemonList = responseAPI_JSON['results'];
     console.log(responseAPI_JSON);
-    showPokemonMiniCards();
+    firstrenderPokemonMiniCards();
 }
 
 
@@ -18,10 +18,17 @@ async function loadAPI(url){
 }
 
 
-async function showPokemonMiniCards(){
+async function firstrenderPokemonMiniCards(){
     document.getElementById('showPokemonMainArea').innerHTML = showPokemonMiniCardsHeadHTML(pokemonList);
-                                // pokemonList.length
-    for (let number = 0; number < 100; number++) {      
+    renderPokemonMiniCards();
+    document.getElementById('showPokemonMainArea').innerHTML += `
+    <div class="buttonReaderMorePokemon"><button onclick="readerMorePokemon()">weitere 100</button></div>`
+}
+
+
+async function renderPokemonMiniCards(){
+                            // pokemonList.length
+    for (let number = drawStartNumber; number < drawEndNumber; number++) {      
         let responseSinglePokemon = await loadAPI(pokemonList[number]['url']);
         let languagePack = await loadAPI(responseSinglePokemon['species']['url']);
         let pokemonName = getPokemonName(languagePack);
@@ -32,6 +39,15 @@ async function showPokemonMiniCards(){
         showPokemonMiniCardsMainHTML(pokemonName,pokemonId,pokemonBgColor,pokemonList[number]['url'],responseSinglePokemon);
     }
 }
+
+
+function readerMorePokemon(){
+    drawStartNumber = drawStartNumber +100;
+    drawEndNumber = drawEndNumber +100;
+    renderPokemonMiniCards();
+
+}
+
 
 
 function getPokemonName(languagePackSinglePokemonAPI_JSON){
@@ -60,7 +76,12 @@ async function showBigCard(url){
     
     showBigCardContent_name(singlePokemonLanguagePack);
     showBigCardContent_id(singlePokemonLanguagePack);
+    showBigCardContent_pokemonClass(singlePokemon);
+    showBigCardContent_shortDescription(singlePokemonLanguagePack);
+    showBigCardContent_pokemonStats(singlePokemon);
+    showBigCardContent_description(singlePokemonLanguagePack);
     showBigCardContent_img(singlePokemon);
+    
     
     console.log(singlePokemon);
     console.log(singlePokemonLanguagePack);
@@ -87,6 +108,63 @@ function showBigCardContent_name(singlePokemonLanguagePack){
     document.getElementById('pokemonName').innerHTML = pokemonName;
 }
 
-showBigCardContent_id(singlePokemonLanguagePack){
 
+function showBigCardContent_id(singlePokemonLanguagePack){
+    document.getElementById('pokemonId').innerHTML = 'ID: '+singlePokemonLanguagePack['id'];
+}
+
+
+function showBigCardContent_shortDescription(singlePokemonLanguagePack){
+    let shortDescription = '';
+    for (var i = 0, length = singlePokemonLanguagePack['genera'].length; i < length; i++) {
+        if (singlePokemonLanguagePack['genera'][i].language.name == language) {
+            shortDescription = singlePokemonLanguagePack['genera'][i].genus;
+        }
+    }
+    document.getElementById('shortDescription').innerHTML = 'Kurzbeschreibung: '+shortDescription;
+}
+
+
+function showBigCardContent_description(singlePokemonLanguagePack){
+    let description = '';
+    document.getElementById('description').innerHTML = '';
+    for (var i = 0, length = singlePokemonLanguagePack['flavor_text_entries'].length; i < length; i++) {
+        if (singlePokemonLanguagePack['flavor_text_entries'][i].language.name == language) {
+            description = singlePokemonLanguagePack['flavor_text_entries'][i].flavor_text;
+            
+            document.getElementById('description').innerHTML += 
+                `<div>${description}</div>`;
+        }
+    }
+}
+
+
+function showBigCardContent_pokemonClass(singlePokemon){
+    let pokemonClass = '';
+    document.getElementById('pokemonClass').innerHTML = '';
+    for (var i = 0, length = singlePokemon['types'].length; i < length; i++) {
+        pokemonClass = singlePokemon['types'][i]['type'].name;
+        document.getElementById('pokemonClass').innerHTML += 
+            `<div>${pokemonClass}</div>`;
+    }
+}
+
+
+function showBigCardContent_pokemonStats(singlePokemon){
+    document.getElementById('pokemonStats').innerHTML = '';
+    for (let statsNumber = 0; statsNumber < singlePokemon['stats'].length; statsNumber++) {
+        const stat = singlePokemon['stats'][statsNumber];
+        document.getElementById('pokemonStats').innerHTML += 
+            `
+            <div> ${stat['stat']['name']} ${stat['base_stat']} </div>
+            <div class="progress">
+                <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="${stat['base_stat']}" aria-valuemin="0" aria-valuemax="100" style="width: ${stat['base_stat']}%"></div>
+            </div>
+            
+            
+            
+            
+            `
+    }
+    
 }
