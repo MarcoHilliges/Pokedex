@@ -1,7 +1,14 @@
 #showPokemonMainArea{
-    position: absolute;
-    top:10%;
+    background-color: beige;
 }
+
+#showPokemonMainArea h2{
+    font-size: 2.5rem;
+    text-align: center;
+
+}
+
+
 
 #showPokemonMainAreaContent{
 
@@ -15,22 +22,38 @@
 .miniCard{
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
+    height: 180px;
+    width: 150px;
     margin: 10px;
-    padding: 10px 20px;
+    padding: 10px 10px;
     border: 5px solid;
-    box-shadow:1px 2px 10px 1px rgba(0, 0, 0, 0.5);
+    box-shadow:1px 2px 10px 1px rgba(0, 0, 0, 0.5) inset;
     border-radius: 10px;
-    background-color: rgb(255, 255, 255);
+    background-color: white ;
 }
 
 .miniCard:hover{
     cursor: pointer;
     box-shadow:1px 2px 10px 1px rgba(0, 0, 0, 1);
-    transform: scale(1.4);
+    transform: scale(1.1);
+}
+
+.miniCardName{
+    text-align: center;
+    font-weight: 500;
+}
+
+.miniCardId{
+    text-align: end;
+    font-style: italic;
+    font-size: 0.8rem;
 }
 
 .miniCard img{
     height: 100px;
+    width: 100px;
+    object-fit: contain;
 }
 
 .buttonReaderMorePokemon{
