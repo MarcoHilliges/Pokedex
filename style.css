@@ -6,10 +6,19 @@ html{
 
 body{
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
 .d-none{
     display: none;
+}
+
+.no-scroll{
+    overflow: hidden;
+}
+
+.opacity{
+    opacity: 0.5;
 }

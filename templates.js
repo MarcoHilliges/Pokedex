@@ -1,6 +1,10 @@
+function showHeadHTML(pokemonList){
+    return `<h2>(${pokemonList.length} Pokémon)</h2>`
+}
+
+
 function showPokemonMiniCardsHeadHTML(pokemonList){
-    return `<h2>Es sind derzeit ${pokemonList.length} Pokémon bekannt</h2>
-    <div id="showPokemonMainAreaContent"></div>`;
+    return `<div id="showPokemonMainAreaContent"></div>`;
 }
 
 
@@ -13,7 +17,7 @@ function showPokemonMiniCardsMainHTML(pokemonName,pokemonId,pokemonBgColor,url,r
             
         <div class="miniCardName"> ${pokemonName}</div>
 
-        <img src="${responseSinglePokemon['sprites']['other']['home']['front_default']}" alt="">
+        <img src="${responseSinglePokemon['sprites']['other']['official-artwork']['front_default']}" alt="">
 
     </div>
     `
