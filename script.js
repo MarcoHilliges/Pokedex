@@ -16,9 +16,9 @@ async function loadAllPokemons() {
     let url = 'https://pokeapi.co/api/v2/pokemon?limit=100000&offset=0'
     let responseAPI_JSON = await loadAPI(url);
     pokemonList = responseAPI_JSON['results'];
-    console.log(responseAPI_JSON);
     showHead();
-    firstrenderPokemonMiniCards();
+    firstrender();
+    // console.log(responseAPI_JSON);
 }
 
 
@@ -33,11 +33,10 @@ function showHead(){
 }
 
 
-async function firstrenderPokemonMiniCards() {
+async function firstrender() {
     document.getElementById('showPokemonMainArea').innerHTML = showPokemonMiniCardsHeadHTML(pokemonList);
     renderPokemonMiniCards();
-    document.getElementById('showPokemonMainArea').innerHTML += `
-    <div class="buttonReaderMorePokemon"><button onclick="readerMorePokemon()" type="button" class="btn btn-outline-info">weitere 100 Pokemon</button></div>`
+    document.getElementById('showPokemonMainArea').innerHTML += showbuttonReaderMorePokemonHTML();
 }
 
 
@@ -47,10 +46,11 @@ async function renderPokemonMiniCards() {
         let languagePack = await loadAPI(responseSinglePokemon['species']['url']);
         let pokemonName = getLanguageName(languagePack);
         let pokemonId = getPokemonId(languagePack);
-        let pokemonBgColor = getPokemonBgColor(languagePack);
+        let pokemonBgColor = cardBgColor(responseSinglePokemon);
 
         document.getElementById('showPokemonMainAreaContent').innerHTML +=
-            showPokemonMiniCardsMainHTML(pokemonName, pokemonId, pokemonBgColor, pokemonList[number]['url'], responseSinglePokemon);
+            showPokemonMiniCardsMainHTML(pokemonName, pokemonId, pokemonBgColor, 
+                                         pokemonList[number]['url'], responseSinglePokemon);
     }
 }
 
@@ -59,7 +59,6 @@ function readerMorePokemon() {
     drawStartNumber = drawStartNumber + 100;
     drawEndNumber = drawEndNumber + 100;
     renderPokemonMiniCards();
-
 }
 
 
@@ -80,20 +79,15 @@ function getPokemonId(languagePackSinglePokemonAPI_JSON) {
 }
 
 
-function cardBgColor(singlePokemon){
-    return singlePokemon['types'][0]['type'].name
+function cardBgColor(singlePokemonJSON){
+    return singlePokemonJSON['types'][0]['type'].name
 }
 
 
-function getPokemonBgColor(languagePackSinglePokemonAPI_JSON) {
-    return pokemonBgColor = languagePackSinglePokemonAPI_JSON['color']['name'];
-}
-
-
-async function showBigCard(url) {
+async function renderBigCard(url) {
     let singlePokemon = await loadAPI(url);
     let singlePokemonLanguagePack = await loadAPI(singlePokemon['species']['url']);
-
+    generatBigCard();
     showBigCardContent_Bg(singlePokemon);
     showBigCardContent_name(singlePokemonLanguagePack);
     showBigCardContent_id(singlePokemonLanguagePack);
@@ -102,21 +96,15 @@ async function showBigCard(url) {
     showBigCardContent_pokemonStats(singlePokemon);
     showBigCardContent_description(singlePokemonLanguagePack);
     showBigCardContent_img(singlePokemon, singlePokemonLanguagePack);
-
-
-    console.log(singlePokemon);
-    console.log(singlePokemonLanguagePack);
-    document.getElementById('body').classList.add('no-scroll');
-    document.getElementById('showPokemonMainArea').classList.add('opacity');
-    document.getElementById('overlay').classList.remove('d-none');
+    openBigCard(); 
+    // console.log(singlePokemon);console.log(singlePokemonLanguagePack); 
 }
 
 
-function showBigCardContent_Bg(singlePokemon){
-    let color = cardBgColor(singlePokemon);
-    console.log(color);
-    document.getElementById(`bigCardArea`).classList.add('cardBgClass_'+color);
-
+function openBigCard(){
+    document.getElementById('body').classList.add('no-scroll');
+    document.getElementById('showPokemonMainArea').classList.add('opacity');
+    document.getElementById('overlay').classList.remove('d-none');
 }
 
 
@@ -127,21 +115,29 @@ function closeBigCard() {
 }
 
 
+function generatBigCard(){
+    document.getElementById('overlay').innerHTML = PokemonBigCardHTML();
+}
+
+
+function showBigCardContent_Bg(singlePokemon){
+    let color = cardBgColor(singlePokemon);
+    document.getElementById(`bigCardArea`).classList.add('cardBgClass_'+color);
+}
+
+
 function showBigCardContent_img(singlePokemon, singlePokemonLanguagePack) {
     document.getElementById('pokemonImg').src = singlePokemon['sprites']['other']['home']['front_default']
-    // borderColor = getPokemonBgColor(singlePokemonLanguagePack);
-    // document.getElementById('bigCardArea').style.backgroundColor = borderColor;
 }
 
 function showBigCardContent_name(singlePokemonLanguagePack) {
     let pokemonName = getLanguageName(singlePokemonLanguagePack);
-    
     document.getElementById('pokemonName').innerHTML = pokemonName;
 }
 
 
 function showBigCardContent_id(singlePokemonLanguagePack) {
-    document.getElementById('pokemonId').innerHTML = 'ID: ' + singlePokemonLanguagePack['id'];
+    document.getElementById('pokemonId').innerHTML = '# ' + singlePokemonLanguagePack['id'];
 }
 
 
@@ -164,16 +160,11 @@ function showBigCardContent_description(singlePokemonLanguagePack) {
         if (singlePokemonLanguagePack['flavor_text_entries'][i].language.name == language) {
             description = singlePokemonLanguagePack['flavor_text_entries'][i].flavor_text;
             if(firstContent == true){
-                document.getElementById('description').innerHTML +=
-                    `<div class="carousel-item active">
-                        <div>${description}</div>
-                    </div>`;
+                document.getElementById('description').innerHTML += bigCardFirstDescriptionHTML(description);
                 firstContent = false;
             }else{
-                document.getElementById('description').innerHTML +=
-                    `<div class="carousel-item">
-                        <div>${description}</div>
-                    </div>`;
+                document.getElementById('description').innerHTML += bigCardNextDescriptionHTML(description);
+                    
             }
         }
     }
