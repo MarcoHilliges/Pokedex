@@ -1,16 +1,42 @@
 #showPokemonMainArea{
+    position: absolute;
+    top:10vh;
+    height: 85vh;
+    padding-top: 10px;
+    margin-left: 60px;
+    margin-right: 60px;
     background-color: beige;
+    border: 3px solid lightgray;
+    border-radius: 10px;
+    
+    box-shadow:1px 2px 10px 1px rgba(0, 0, 0, 0.5) inset;
+    overflow-y: scroll;
     
 }
 
-#showPokemonMainArea h2{
-    font-size: 2.5rem;
-    text-align: center;
+#showPokemonMainArea::-webkit-scrollbar {
+    width: 15px;
 }
+
+#showPokemonMainArea::-webkit-scrollbar-track {
+    background-color: beige;
+    border: 1px solid lightgray;
+    border-radius: 16px;
+    box-shadow:1px 2px 10px 1px rgba(0, 0, 0, 0.5) inset;
+}
+
+#showPokemonMainArea::-webkit-scrollbar-thumb {
+    border-radius: 110px;
+    border: 6px solid rgba(0, 0, 0, 0.18);
+    border-left: 0;
+    border-right: 0;
+    background-color: #8a8a8a;
+  }
 
 #showPokemonMainAreaContent{
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
 }
 
 .miniCard{

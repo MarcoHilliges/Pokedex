@@ -1,5 +1,5 @@
 #overlay{
-    z-index: 2;
+    z-index: 10;
     position: absolute;
     top: 0;
     left: 0;
@@ -8,13 +8,13 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: transparent;
 
 }
 
 #bigCardArea{
     position: fixed;
-    top: 10%;
+    top: 13%;
     width: 500px;
     height: auto;
     padding: 0px;

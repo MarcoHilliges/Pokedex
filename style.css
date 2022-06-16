@@ -5,10 +5,12 @@ html{
 }
 
 body{
+    position: relative;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    background-color: rgb(167, 167, 167) !important;
 }
 
 .d-none{
@@ -20,5 +22,5 @@ body{
 }
 
 .opacity{
-    opacity: 0.5;
+    opacity: 1;
 }

@@ -1,10 +1,15 @@
 header{
+    /* z-index: 2; */
+    position: fixed;
+    top: 0;
+    left: 60px;
+    right: 60px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 100vw;
-    padding: 10px 50px;
-    background-color: bisque;
+    padding: 10px 0px;
+    background-color: rgb(167, 167, 167);
+    
 }
 
 header h2{

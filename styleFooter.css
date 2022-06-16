@@ -1,3 +1,26 @@
 footer{
+    /* z-index: 2; */
+    position: fixed;
+    bottom: 0;
+    left: 60px;
+    right: 60px;
+    height: 5vh;
 
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}
+
+footer a{
+    padding: 5px;
+    text-decoration: none;
+    color: white;
+    transition: all 225ms ease-in-out;
+}
+
+footer a:hover{
+    border-radius: 10px;
+    color: black;
+    background-color: rgb(255, 255, 255);
+    transition: all 225ms ease-in-out;
 }
