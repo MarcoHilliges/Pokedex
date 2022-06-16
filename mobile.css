@@ -1,0 +1,405 @@
+@media(orientation: portrait) and (max-width: 800px){
+    header{
+        left: 20px;
+        right: 20px;
+    }
+    
+    #showPokemonMainArea{
+        top:100px;
+        margin-left: 20px;
+        margin-right: 20px;        
+    }
+
+    .miniCard{
+        height: 150px;
+        width: 130px;
+    }
+
+    .miniCard img{
+        height: 70px;
+        width: 70px;
+    }
+
+    #bigCardArea{
+        top:110px;
+        width: 350px;
+    }
+
+    .bigCardArea2{
+        padding: 20px 20px 20px;
+    }
+
+    .carousel-inner{
+        padding: 0 15px;
+    }
+
+    .progress {
+        --bs-progress-height: 0.8rem !important;
+    }
+
+    
+}
+
+@media(orientation: portrait) and (max-width: 550px){
+    header{
+        left: 10px;
+        right: 10px;
+    }
+
+    #icon{
+        height: 40px;
+        width: 40px;
+    }
+
+    header h2{
+        font-size: 1rem;
+    }
+
+    #showPokemonMainArea{
+        top:80px;
+        margin-left: 10px;
+        margin-right: 10px;        
+    }
+
+    .miniCard{
+        margin: 5px;
+        height: 120px;
+        width: 100px;
+    }
+
+    .miniCard img{
+        height: 50px;
+        width: 50px;
+    }
+
+    footer{
+        height: 35px;
+        left: 10px;
+        right: 10px;
+    }
+
+    #bigCardArea{
+        top:90px;
+
+    }
+
+    .progress {
+        --bs-progress-height: 0.6rem !important;
+    }
+
+}
+
+@media(orientation: portrait) and (max-width: 450px){
+    #bigCardArea{
+        width: 300px;
+    }
+
+    .bigCardName{
+        flex-direction: column;
+    }
+
+    #pokemonImg{
+        margin-top: -20px;
+        height: 150px;
+    }
+
+    .bigCardArea2{
+        margin-top: -20px;
+    }
+
+    .carousel-inner{
+        padding: 0 10px;
+    }
+
+    .progress {
+        --bs-progress-height: 0.5rem !important;
+    }
+}
+
+@media(orientation: portrait) and (max-width: 370px){
+    #bigCardArea{
+        width: 250px;
+        font-size: 15px;
+    }
+
+    #pokemonImg{
+        margin-top: -20px;
+        height: 100px;
+    }
+
+    .bigCardArea2{
+        font-size: 12px;
+    }
+
+    .carousel-control-prev-icon{
+        margin-right: 20px;
+    }
+
+    .carousel-control-next-icon{
+        margin-left: 20px;
+    }
+
+    .progress {
+        --bs-progress-height: 0.4rem !important;
+    }
+}
+
+@media(orientation: portrait) and (max-width: 310px){
+    #bigCardArea{
+        font-size: 14px;
+        width: 200px;
+        font-size: 15px;
+    }
+
+    .carousel-control-prev-icon{
+        margin-right: 10px;
+    }
+
+    .carousel-control-next-icon{
+        margin-left: 10px;
+    }
+}
+
+
+@media(orientation: portrait) and (max-width: 300px){
+    html{
+        font-size: 14px;
+    }
+
+    #dropdownMenuButton1{
+        padding: 3px 5px;
+    }
+    
+    #showPokemonMainArea{
+        top:70px;
+        margin-left: 10px;
+        margin-right: 10px;        
+    }
+
+    .miniCard{
+        margin: 5px;
+        padding: 0px;
+        height: 100px;
+        width: 100px;
+    }
+
+    .miniCard img{
+        height: 45px;
+        width: 45px;
+    }
+
+    #bigCardArea{
+        top: 75px;
+    }
+    .progress {
+        --bs-progress-height: 0.3rem !important;
+    }
+}
+
+@media(orientation: landscape) and (max-height: 800px){
+    header{
+        left: 20px;
+        right: 20px;
+    }
+    
+    .sideName{
+        display: flex;
+        align-items: center;
+    }
+
+    .sideName h2{
+        margin-left: 5px;
+    }
+
+    #showPokemonMainArea{
+        top:80px;
+        margin-left: 20px;
+        margin-right: 20px;        
+    }
+
+    .miniCard{
+        height: 150px;
+        width: 130px;
+    }
+
+    .miniCard img{
+        height: 70px;
+        width: 70px;
+    }
+
+    #bigCardArea{
+        top:85px;
+        width: 350px;
+    }
+
+    .bigCardArea2{
+        padding: 20px 20px 20px;
+    }
+
+    .carousel-inner{
+        padding: 0 15px;
+    }
+
+    .progress {
+        --bs-progress-height: 0.8rem !important;
+    }
+
+    
+}
+
+@media(orientation: landscape) and (max-height: 550px){
+    header{
+        left: 10px;
+        right: 10px;
+        padding: 0;
+    }
+
+    #icon{
+        height: 40px;
+        width: 40px;
+    }
+
+    header h2{
+        font-size: 1rem;
+    }
+
+    #showPokemonMainArea{
+        top:50px;
+        margin-left: 10px;
+        margin-right: 10px;        
+    }
+
+    .miniCard{
+        margin: 5px;
+        height: 120px;
+        width: 100px;
+    }
+
+    .miniCard img{
+        height: 50px;
+        width: 50px;
+    }
+
+    footer{
+        height: 35px;
+        left: 10px;
+        right: 10px;
+    }
+
+    #bigCardArea{
+        top:55px;
+
+    }
+
+    .progress {
+        --bs-progress-height: 0.6rem !important;
+    }
+
+}
+
+@media(orientation: landscape) and (max-height: 450px){
+    #bigCardArea{
+        width: 300px;
+    }
+
+    .bigCardName{
+        flex-direction: column;
+    }
+
+    #pokemonImg{
+        margin-top: -20px;
+        height: 150px;
+    }
+
+    .bigCardArea2{
+        margin-top: -20px;
+    }
+
+    .carousel-inner{
+        padding: 0 10px;
+    }
+
+    .progress {
+        --bs-progress-height: 0.5rem !important;
+    }
+}
+
+@media(orientation: landscape) and (max-height: 370px){
+    #bigCardArea{
+        width: 250px;
+        font-size: 15px;
+    }
+
+    #pokemonImg{
+        margin-top: -20px;
+        height: 100px;
+    }
+
+    .bigCardArea2{
+        font-size: 12px;
+    }
+
+    .carousel-control-prev-icon{
+        margin-right: 20px;
+    }
+
+    .carousel-control-next-icon{
+        margin-left: 20px;
+    }
+
+    .progress {
+        --bs-progress-height: 0.4rem !important;
+    }
+}
+
+@media(orientation: landscape) and (max-height: 310px){
+    #bigCardArea{
+        font-size: 14px;
+        width: 200px;
+        font-size: 15px;
+    }
+
+    .carousel-control-prev-icon{
+        margin-right: 10px;
+    }
+
+    .carousel-control-next-icon{
+        margin-left: 10px;
+    }
+}
+
+
+@media(orientation: landscape) and (max-height: 300px){
+    html{
+        font-size: 14px;
+    }
+
+    #dropdownMenuButton1{
+        padding: 3px 5px;
+    }
+    
+    #showPokemonMainArea{
+        top:45px;
+        margin-left: 10px;
+        margin-right: 10px;        
+    }
+
+    .miniCard{
+        margin: 5px;
+        padding: 0px;
+        height: 100px;
+        width: 100px;
+    }
+
+    .miniCard img{
+        height: 45px;
+        width: 45px;
+    }
+
+    #bigCardArea{
+        top: 50px;
+    }
+    .progress {
+        --bs-progress-height: 0.3rem !important;
+    }
+}
