@@ -11,6 +11,7 @@ body{
     justify-content: center;
     align-items: center;
     background-color: rgb(167, 167, 167) !important;
+    background-image: url(./img/background-1920.jpg);
 }
 
 .d-none{

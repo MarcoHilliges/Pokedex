@@ -1,5 +1,6 @@
 #showPokemonMainArea{
     position: absolute;
+    z-index: 2;
     top:10vh;
     height: 85vh;
     padding-top: 10px;
@@ -8,7 +9,6 @@
     background-color: beige;
     border: 3px solid lightgray;
     border-radius: 10px;
-    
     box-shadow:1px 2px 10px 1px rgba(0, 0, 0, 0.5) inset;
     overflow-y: scroll;
     

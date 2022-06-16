@@ -1,5 +1,5 @@
 #overlay{
-    z-index: 10;
+    z-index: 2 !important;
     position: absolute;
     top: 0;
     left: 0;

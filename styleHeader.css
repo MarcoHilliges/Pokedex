@@ -1,5 +1,5 @@
 header{
-    /* z-index: 2; */
+    z-index: 3;
     position: fixed;
     top: 0;
     left: 60px;
@@ -8,23 +8,35 @@ header{
     align-items: center;
     justify-content: space-between;
     padding: 10px 0px;
-    background-color: rgb(167, 167, 167);
     
+}
+
+#icon{
+    height: 60px;
+    width: 60px;
+    object-fit: contain;
+    border: 2px solid lightgray;
+    border-radius: 100%;
+    box-shadow:1px 2px 10px 1px rgba(0, 0, 0, 0.5) inset;
+    background-image: url(./img/messing.jpg);
 }
 
 header h2{
     text-align: center;
     font-size: 1.2rem;
-    font-weight: 200;
+    font-weight: 400;
     font-style: italic;
+    color: white;
 }
 
 .changeLanguageArea{
     display: flex;
+    background-image: url(./img/messing.jpg);
+    border-radius: 10px;
 }
 
 .changeLanguageArea div{
-    padding-left: 10px;
+    padding: 10px;
 }
 
 .buttonChangeLanguage:hover{
