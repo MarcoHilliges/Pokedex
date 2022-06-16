@@ -80,6 +80,11 @@ function getPokemonId(languagePackSinglePokemonAPI_JSON) {
 }
 
 
+function cardBgColor(singlePokemon){
+    return singlePokemon['types'][0]['type'].name
+}
+
+
 function getPokemonBgColor(languagePackSinglePokemonAPI_JSON) {
     return pokemonBgColor = languagePackSinglePokemonAPI_JSON['color']['name'];
 }
@@ -89,6 +94,7 @@ async function showBigCard(url) {
     let singlePokemon = await loadAPI(url);
     let singlePokemonLanguagePack = await loadAPI(singlePokemon['species']['url']);
 
+    showBigCardContent_Bg(singlePokemon);
     showBigCardContent_name(singlePokemonLanguagePack);
     showBigCardContent_id(singlePokemonLanguagePack);
     showBigCardContent_pokemonClass(singlePokemon);
@@ -106,6 +112,14 @@ async function showBigCard(url) {
 }
 
 
+function showBigCardContent_Bg(singlePokemon){
+    let color = cardBgColor(singlePokemon);
+    console.log(color);
+    document.getElementById(`bigCardArea`).classList.add('cardBgClass_'+color);
+
+}
+
+
 function closeBigCard() {
     document.getElementById('overlay').classList.add('d-none');
     document.getElementById('showPokemonMainArea').classList.remove('opacity');
@@ -115,8 +129,8 @@ function closeBigCard() {
 
 function showBigCardContent_img(singlePokemon, singlePokemonLanguagePack) {
     document.getElementById('pokemonImg').src = singlePokemon['sprites']['other']['home']['front_default']
-    borderColor = getPokemonBgColor(singlePokemonLanguagePack);
-    document.getElementById('pokemonImg').style.borderColor = borderColor;
+    // borderColor = getPokemonBgColor(singlePokemonLanguagePack);
+    // document.getElementById('bigCardArea').style.backgroundColor = borderColor;
 }
 
 function showBigCardContent_name(singlePokemonLanguagePack) {
@@ -173,11 +187,23 @@ async function showBigCardContent_pokemonClass(singlePokemon) {
         let url = singlePokemon['types'][i]['type'].url;
         let responseAPI_JSON = await loadAPI(url);
         pokemonClass = getLanguageName(responseAPI_JSON);
-        
+        console.log(pokemonClass, i);
         document.getElementById('pokemonClass').innerHTML +=
-            `<div class="pokemonSingleClass">${pokemonClass}</div>`;
+            `<div id="pokemonSingleId${i}" class="pokemonSingleClass">${pokemonClass}</div>`;
+        
+        let className = singlePokemon['types'][i]['type'].name;
+        pokemonClassColor(className, i);
+        
     }
 }
+
+
+function pokemonClassColor(className, i){
+    document.getElementById(`pokemonSingleId${i}`).classList.add('class_'+className);
+}
+
+
+
 
 
 function showBigCardContent_pokemonStats(singlePokemon) {
