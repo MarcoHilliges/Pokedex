@@ -247,7 +247,7 @@
 }
 
 .cardBorderColor_ice{
-    background-color: #98D8D8 !important;
+    border-color: #98D8D8 !important;
 }
 
 .class_dragon{
@@ -259,7 +259,7 @@
 }
 
 .cardBorderColor_dragon{
-    background-color: #6699CC !important;
+    border-color: #6699CC !important;
 }
 
 .class_dark{
@@ -271,7 +271,7 @@
 }
 
 .cardBorderColor_dark{
-    background-color: #705848 !important;
+    border-color: #705848 !important;
 }
 
 .class_fairy{
@@ -283,7 +283,7 @@
 }
 
 .cardBorderColor_fairy{
-    background-color: rgb(255, 131, 245) !important;
+    border-color: rgb(255, 131, 245) !important;
 }
 
 .class_unknown{
@@ -295,7 +295,7 @@
 }
 
 .cardBorderColor_unknown{
-    background-color: #a3bfb7 !important;
+    border-color: #a3bfb7 !important;
 }
 
 .class_shadow{
@@ -307,7 +307,7 @@
 }
 
 .cardBorderColor_shadow{
-    background-color: #834196 !important;
+    border-color: #834196 !important;
 }
 
 #pokemonClass div{

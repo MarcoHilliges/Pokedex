@@ -155,17 +155,15 @@ function showBigCardContent_shortDescription(singlePokemonLanguagePack) {
 function showBigCardContent_description(singlePokemonLanguagePack) {
     let description = '';
     let firstContent = true;
-    document.getElementById('description').innerHTML = '';
+    descriptionArea = document.getElementById('description');
+    descriptionArea.innerHTML = '';
     for (var i = 0, length = singlePokemonLanguagePack['flavor_text_entries'].length; i < length; i++) {
         if (singlePokemonLanguagePack['flavor_text_entries'][i].language.name == language) {
             description = singlePokemonLanguagePack['flavor_text_entries'][i].flavor_text;
             if(firstContent == true){
-                document.getElementById('description').innerHTML += bigCardFirstDescriptionHTML(description);
+                descriptionArea.innerHTML += bigCardFirstDescriptionHTML(description);
                 firstContent = false;
-            }else{
-                document.getElementById('description').innerHTML += bigCardNextDescriptionHTML(description);
-                    
-            }
+            }else{descriptionArea.innerHTML += bigCardNextDescriptionHTML(description);}
         }
     }
 }
@@ -177,14 +175,12 @@ async function showBigCardContent_pokemonClass(singlePokemon) {
     for (var i = 0, length = singlePokemon['types'].length; i < length; i++) {
         let url = singlePokemon['types'][i]['type'].url;
         let responseAPI_JSON = await loadAPI(url);
-        pokemonClass = getLanguageName(responseAPI_JSON);
-        console.log(pokemonClass, i);
-        document.getElementById('pokemonClass').innerHTML +=
-            `<div id="pokemonSingleId${i}" class="pokemonSingleClass">${pokemonClass}</div>`;
-        
         let className = singlePokemon['types'][i]['type'].name;
+        pokemonClass = getLanguageName(responseAPI_JSON);
+        document.getElementById('pokemonClass').innerHTML += bigCardPokemonClassHTML(pokemonClass, i);
+
         pokemonClassColor(className, i);
-        
+        // console.log(pokemonClass, i);
     }
 }
 
@@ -192,9 +188,6 @@ async function showBigCardContent_pokemonClass(singlePokemon) {
 function pokemonClassColor(className, i){
     document.getElementById(`pokemonSingleId${i}`).classList.add('class_'+className);
 }
-
-
-
 
 
 function showBigCardContent_pokemonStats(singlePokemon) {
@@ -211,11 +204,10 @@ async function showBigCardContent_pokemonStatsHP(singlePokemon){
     let url = singlePokemon['stats'][0].stat.url
     let responseAPI_JSON = await loadAPI(url);
     let statName = getLanguageName(responseAPI_JSON);
+    let base_stat = singlePokemon['stats'][0].base_stat;
     document.getElementById('pokemonHp').innerHTML =
-        `<div> ${statName}  ${singlePokemon['stats'][0].base_stat} </div>
-        <div class="progress">
-            <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" aria-valuenow="${singlePokemon['stats'][0].base_stat}" aria-valuemin="0" aria-valuemax="200" style="width: ${singlePokemon['stats'][0].base_stat / 2}%"></div>
-        </div>`;
+        pokemonStatsHPHTML(statName, base_stat);
+        
 }
 
 
@@ -223,11 +215,10 @@ async function showBigCardContent_pokemonStatsAttack(singlePokemon){
     let url = singlePokemon['stats'][1].stat.url
     let responseAPI_JSON = await loadAPI(url);
     let statName = getLanguageName(responseAPI_JSON);
+    let base_stat = singlePokemon['stats'][1].base_stat;
     document.getElementById('pokemonAttack').innerHTML =
-        `<div> ${statName}  ${singlePokemon['stats'][1].base_stat} </div>
-        <div class="progress">
-            <div class="progress-bar progress-bar-striped progress-bar-animated bg-danger" role="progressbar" aria-valuenow="${singlePokemon['stats'][1].base_stat}" aria-valuemin="0" aria-valuemax="200" style="width: ${singlePokemon['stats'][1].base_stat / 2}%"></div>
-        </div>`;
+        pokemonStatsAttackHTML(statName, base_stat);
+        
 }
 
 
@@ -235,11 +226,9 @@ async function showBigCardContent_pokemonStatsDefense(singlePokemon){
     let url = singlePokemon['stats'][2].stat.url
     let responseAPI_JSON = await loadAPI(url);
     let statName = getLanguageName(responseAPI_JSON);
+    let base_stat = singlePokemon['stats'][2].base_stat;
     document.getElementById('pokemonDefense').innerHTML =
-        `<div> ${statName}  ${singlePokemon['stats'][2].base_stat} </div>
-        <div class="progress">
-            <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="${singlePokemon['stats'][2].base_stat}" aria-valuemin="0" aria-valuemax="200" style="width: ${singlePokemon['stats'][2].base_stat / 2}%"></div>
-        </div>`;
+        pokemonStatsDefense(statName, base_stat);
 }
 
 
@@ -247,11 +236,9 @@ async function showBigCardContent_pokemonStatsSpecialAttack(singlePokemon){
     let url = singlePokemon['stats'][3].stat.url
     let responseAPI_JSON = await loadAPI(url);
     let statName = getLanguageName(responseAPI_JSON);
+    let base_stat = singlePokemon['stats'][3].base_stat;
     document.getElementById('pokemonSpecial-attack').innerHTML =
-        `<div> ${statName}  ${singlePokemon['stats'][3].base_stat} </div>
-        <div class="progress">
-            <div class="progress-bar progress-bar-striped progress-bar-animated bg-warning" role="progressbar" aria-valuenow="${singlePokemon['stats'][3].base_stat}" aria-valuemin="0" aria-valuemax="200" style="width: ${singlePokemon['stats'][3].base_stat / 2}%"></div>
-        </div>`;
+        pokemonStatsSpecialAttack(statName, base_stat);
 }
 
 
@@ -259,11 +246,9 @@ async function showBigCardContent_pokemonStatsSpecialDefense(singlePokemon){
     let url = singlePokemon['stats'][4].stat.url
     let responseAPI_JSON = await loadAPI(url);
     let statName = getLanguageName(responseAPI_JSON);
+    let base_stat = singlePokemon['stats'][4].base_stat;
     document.getElementById('pokemonSpecial-defense').innerHTML =
-        `<div> ${statName}  ${singlePokemon['stats'][4].base_stat} </div>
-        <div class="progress">
-            <div class="progress-bar progress-bar-striped progress-bar-animated bg-warning" role="progressbar" aria-valuenow="${singlePokemon['stats'][4].base_stat}" aria-valuemin="0" aria-valuemax="200" style="width: ${singlePokemon['stats'][4].base_stat / 2}%"></div>
-        </div>`;
+        pokemonStatsSpecialDefense(statName, base_stat);
 }
 
 
@@ -271,9 +256,7 @@ async function showBigCardContent_pokemonStatsSpeed(singlePokemon){
     let url = singlePokemon['stats'][5].stat.url
     let responseAPI_JSON = await loadAPI(url);
     let statName = getLanguageName(responseAPI_JSON);
+    let base_stat = singlePokemon['stats'][5].base_stat;
     document.getElementById('pokemonSpeed').innerHTML =
-    `<div> ${statName}  ${singlePokemon['stats'][5].base_stat} </div>
-    <div class="progress">
-        <div class="progress-bar progress-bar-striped progress-bar-animated bg-info" role="progressbar" aria-valuenow="${singlePokemon['stats'][5].base_stat}" aria-valuemin="0" aria-valuemax="200" style="width: ${singlePokemon['stats'][5].base_stat / 2}%"></div>
-    </div>`;
+        pokemonStatsSpeed(statName, base_stat);
 }

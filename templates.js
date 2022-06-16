@@ -104,6 +104,94 @@ function PokemonBigCardHTML() {
 }
 
 
+function bigCardPokemonClassHTML(pokemonClass, i){
+    return `<div id="pokemonSingleId${i}" 
+                 class="pokemonSingleClass">
+                 
+                    ${pokemonClass}
+                    
+            </div>`;
+}
+
+
+function pokemonStatsHPHTML(statName, base_stat){
+    return `<div> ${statName}  ${base_stat} </div>
+            <div class="progress">
+                <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" 
+                     role="progressbar" 
+                     aria-valuenow="${base_stat}" aria-valuemin="0" aria-valuemax="200" 
+                     style="width: ${base_stat / 2}%">
+
+                </div>
+            </div>`;
+}
+
+
+function pokemonStatsAttackHTML(statName, base_stat){
+    return `<div> ${statName}  ${base_stat} </div>
+            <div class="progress">
+                <div class="progress-bar progress-bar-striped progress-bar-animated bg-danger" 
+                     role="progressbar" 
+                     aria-valuenow="${base_stat}" aria-valuemin="0" aria-valuemax="200" 
+                     style="width: ${base_stat / 2}%">
+                     
+                </div>
+            </div>`;
+}
+
+
+function pokemonStatsDefense(statName, base_stat){
+    return `<div> ${statName}  ${base_stat} </div>
+            <div class="progress">
+                <div class="progress-bar progress-bar-striped progress-bar-animated" 
+                     role="progressbar" 
+                     aria-valuenow="${base_stat}" aria-valuemin="0" aria-valuemax="200" 
+                     style="width: ${base_stat / 2}%">
+                
+                </div>
+            </div>`;
+}
+
+
+function pokemonStatsSpecialAttack(statName, base_stat){
+    return `<div> ${statName}  ${base_stat} </div>
+            <div class="progress">
+                <div class="progress-bar progress-bar-striped progress-bar-animated bg-warning" 
+                     role="progressbar" 
+                     aria-valuenow="${base_stat}" aria-valuemin="0" aria-valuemax="200" 
+                     style="width: ${base_stat / 2}%">
+                     
+                </div>
+            </div>`;
+}
+
+
+function pokemonStatsSpecialDefense(statName, base_stat){
+    return  `<div> ${statName}  ${base_stat} </div>
+             <div class="progress">
+                <div class="progress-bar progress-bar-striped progress-bar-animated bg-warning" 
+                     role="progressbar" 
+                     aria-valuenow="${base_stat}" aria-valuemin="0" aria-valuemax="200" 
+                     style="width: ${base_stat / 2}%">
+
+                </div>
+             </div>`;
+}
+
+
+function pokemonStatsSpeed(statName, base_stat){
+    return `<div> ${statName}  ${base_stat} </div>
+            <div class="progress">
+                <div class="progress-bar progress-bar-striped progress-bar-animated bg-info" 
+                     role="progressbar" 
+                     aria-valuenow="${base_stat}" aria-valuemin="0" aria-valuemax="200" 
+                     style="width: ${base_stat / 2}%">
+                
+                </div>
+            </div>`;
+}
+
+
 function bigCardFirstDescriptionHTML(description){
     return `<div class="carousel-item active">
                 <div>${description}</div>
