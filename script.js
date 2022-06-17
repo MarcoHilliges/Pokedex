@@ -43,16 +43,24 @@ async function firstrender() {
 
 async function renderPokemonMiniCards() {
     for (let number = drawStartNumber; number < drawEndNumber; number++) {
-        let responseSinglePokemon = await loadAPI(pokemonList[number]['url']);
-        let languagePack = await loadAPI(responseSinglePokemon['species']['url']);
-        let pokemonName = getLanguageName(languagePack);
-        let pokemonId = getPokemonId(languagePack);
-        let pokemonBgColor = cardBgColor(responseSinglePokemon);
-
+        
+        PokemonMiniCardsJSON = await creatPokemonMiniCardsJSON(number);
         document.getElementById('showPokemonMainAreaContent').innerHTML +=
-            showPokemonMiniCardsMainHTML(pokemonName, pokemonId, pokemonBgColor, 
-                                         pokemonList[number]['url'], responseSinglePokemon);
+            showPokemonMiniCardsMainHTML(PokemonMiniCardsJSON);
+            
     }
+}
+
+
+async function creatPokemonMiniCardsJSON(number){
+    let responseSinglePokemon = await loadAPI(pokemonList[number]['url']);
+    let languagePack = await loadAPI(responseSinglePokemon['species']['url']);
+    let pokemonName = getLanguageName(languagePack);
+    let pokemonId = getPokemonId(languagePack);
+    let pokemonBgColor = cardBgColor(responseSinglePokemon);
+    let pokemonListUrl = pokemonList[number]['url'];
+
+    return {pokemonName, pokemonId, pokemonBgColor, pokemonListUrl, responseSinglePokemon}
 }
 
 

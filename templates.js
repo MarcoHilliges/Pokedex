@@ -8,17 +8,17 @@ function showPokemonMiniCardsHeadHTML(pokemonList) {
 }
 
 
-function showPokemonMiniCardsMainHTML(pokemonName, pokemonId, pokemonBgColor, url, responseSinglePokemon) {
+function showPokemonMiniCardsMainHTML(PokemonMiniCardsJSON) {
     return /*html*/`
-    <div onclick="renderBigCard('${url}')"
-         class="miniCard cardBgClass_${pokemonBgColor} cardBorderColor_${pokemonBgColor}"
-         title="${pokemonName}">
+    <div onclick="renderBigCard('${PokemonMiniCardsJSON.url}')"
+         class="miniCard cardBgClass_${PokemonMiniCardsJSON.pokemonBgColor} cardBorderColor_${PokemonMiniCardsJSON.pokemonBgColor}"
+         title="${PokemonMiniCardsJSON.pokemonName}">
         
         <div class="miniCardId">Id: ${pokemonId}</div>
             
-        <div class="miniCardName"> ${pokemonName}</div>
+        <div class="miniCardName"> ${PokemonMiniCardsJSON.pokemonName}</div>
 
-        <img src="${responseSinglePokemon['sprites']['other']['official-artwork']['front_default']}" alt="">
+        <img src="${PokemonMiniCardsJSON.responseSinglePokemon['sprites']['other']['official-artwork']['front_default']}" alt="">
 
     </div>
     `
