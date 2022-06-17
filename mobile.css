@@ -37,6 +37,16 @@
         --bs-progress-height: 0.8rem !important;
     }
 
+    footer{
+        height: 25px;
+        left: 10px;
+        right: 10px;
+    }
+
+    footer a{
+        padding: 0;
+    }
+
     
 }
 
@@ -72,12 +82,6 @@
         width: 50px;
     }
 
-    footer{
-        height: 35px;
-        left: 10px;
-        right: 10px;
-    }
-
     #bigCardArea{
         top:90px;
 
@@ -90,6 +94,10 @@
 }
 
 @media(orientation: portrait) and (max-width: 450px){
+    header h2{
+        display: none;
+    }
+    
     #bigCardArea{
         width: 300px;
     }
@@ -100,11 +108,15 @@
 
     #pokemonImg{
         margin-top: -20px;
-        height: 150px;
+        height: 120px;
     }
 
     .bigCardArea2{
         margin-top: -20px;
+    }
+
+    #pokemonStats{
+        font-size: 0.7rem;
     }
 
     .carousel-inner{
@@ -191,17 +203,13 @@
     #bigCardArea{
         top: 75px;
     }
+
     .progress {
         --bs-progress-height: 0.3rem !important;
     }
 }
 
-@media(orientation: landscape) and (max-height: 800px){
-    header{
-        left: 20px;
-        right: 20px;
-    }
-    
+@media(orientation: landscape) and (max-height: 900px){}
     .sideName{
         display: flex;
         align-items: center;
@@ -211,6 +219,12 @@
         margin-left: 5px;
     }
 
+@media(orientation: landscape) and (max-height: 800px){
+    header{
+        left: 20px;
+        right: 20px;
+    }
+    
     #showPokemonMainArea{
         top:80px;
         margin-left: 20px;
@@ -229,11 +243,22 @@
 
     #bigCardArea{
         top:85px;
-        width: 350px;
+        width: 650px;
     }
 
     .bigCardArea2{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
         padding: 20px 20px 20px;
+    }
+
+    #pokemonStats{
+        width: 280px;
+    }
+
+    #carouselExampleControls{
+        width: 280px;
     }
 
     .carousel-inner{
@@ -247,7 +272,7 @@
     
 }
 
-@media(orientation: landscape) and (max-height: 550px){
+@media(orientation: landscape) and (max-height: 600px){
     header{
         left: 10px;
         right: 10px;
@@ -291,28 +316,56 @@
 
     }
 
+    #pokemonImg{
+        margin-top: -80px;
+        height: 200px;
+    }
+
     .progress {
         --bs-progress-height: 0.6rem !important;
     }
 
 }
 
-@media(orientation: landscape) and (max-height: 450px){
+@media(orientation: landscape) and (max-height: 500px){
     #bigCardArea{
+        width: 600px;
+    }
+
+    #pokemonStats{
+        width: 250px;
+    }
+
+    #carouselExampleControls{
         width: 300px;
     }
-
-    .bigCardName{
-        flex-direction: column;
-    }
-
+    
     #pokemonImg{
-        margin-top: -20px;
-        height: 150px;
+        margin-top: -120px;
+        margin-left: 200px;
+        height: 180px;
     }
+
+    footer{
+        display: none;
+    }
+
+    .footerErsatz{
+        display: flex;
+        justify-content: center;
+    }
+    
+}
+
+@media(orientation: landscape) and (max-height: 450px){
+    
 
     .bigCardArea2{
-        margin-top: -20px;
+        margin-top: -50px;
+    }
+
+    #pokemonStats{
+        font-size: 12px;
     }
 
     .carousel-inner{
@@ -326,16 +379,22 @@
 
 @media(orientation: landscape) and (max-height: 370px){
     #bigCardArea{
-        width: 250px;
+        width: 650px;
         font-size: 15px;
     }
 
+    #pokemonClass{
+        margin-top: 0;
+    }
+
     #pokemonImg{
-        margin-top: -20px;
-        height: 100px;
+        margin-top: -100px;
+        height: 130px;
     }
 
     .bigCardArea2{
+        margin-top: -28px;
+        padding: 5px 20px;
         font-size: 12px;
     }
 
@@ -355,7 +414,7 @@
 @media(orientation: landscape) and (max-height: 310px){
     #bigCardArea{
         font-size: 14px;
-        width: 200px;
+        
         font-size: 15px;
     }
 
@@ -399,6 +458,18 @@
     #bigCardArea{
         top: 50px;
     }
+
+    .bigCardArea2{
+        margin-top: -28px;
+        padding-top:  23px;
+        font-size: 12px;
+    }
+
+    #pokemonImg{
+        margin-top: -100px;
+        height: 100px;
+    }
+
     .progress {
         --bs-progress-height: 0.3rem !important;
     }

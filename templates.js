@@ -35,7 +35,8 @@ function showbuttonReaderMorePokemonHTML(){
             weitere 100 Pokemon
 
         </button>
-    </div>`
+    </div>
+    <div class="footerErsatz"><a href="https://pokeapi.co/">Daten stammen von pokeapi.co</a></div>`
 }
 
 

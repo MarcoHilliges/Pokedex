@@ -7,6 +7,7 @@ let drawEndNumber = 100;
 function changeLanguage(selectLanguage){
     if(selectLanguage !== language){
     language = selectLanguage;
+    closeBigCard();
     loadAllPokemons();
     }
 }
