@@ -9,6 +9,7 @@ function showPokemonMiniCardsHeadHTML(pokemonList) {
 
 
 function showPokemonMiniCardsMainHTML(PokemonMiniCardsJSON) {
+    console.log(PokemonMiniCardsJSON);
     return /*html*/`
     <div onclick="renderBigCard('${PokemonMiniCardsJSON.url}')"
          class="miniCard cardBgClass_${PokemonMiniCardsJSON.pokemonBgColor} cardBorderColor_${PokemonMiniCardsJSON.pokemonBgColor}"

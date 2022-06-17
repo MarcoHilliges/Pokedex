@@ -58,9 +58,9 @@ async function creatPokemonMiniCardsJSON(number){
     let pokemonName = getLanguageName(languagePack);
     let pokemonId = getPokemonId(languagePack);
     let pokemonBgColor = cardBgColor(responseSinglePokemon);
-    let pokemonListUrl = pokemonList[number]['url'];
+    let url = pokemonList[number]['url'];
 
-    return {pokemonName, pokemonId, pokemonBgColor, pokemonListUrl, responseSinglePokemon}
+    return {pokemonName, pokemonId, pokemonBgColor, url, responseSinglePokemon}
 }
 
 
