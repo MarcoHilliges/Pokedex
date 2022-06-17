@@ -38,13 +38,12 @@
     }
 
     footer{
-        height: 25px;
-        left: 10px;
-        right: 10px;
+        display: none;
     }
 
-    footer a{
-        padding: 0;
+    .footerErsatz{
+        display: flex;
+        justify-content: center;
     }
 
     
@@ -129,6 +128,17 @@
 }
 
 @media(orientation: portrait) and (max-width: 370px){
+    #showPokemonMainArea{
+        top:55px;
+        margin-left: 10px;
+        margin-right: 10px;        
+    }
+
+    #bigCardArea{
+        top:60px;
+
+    }
+    
     #bigCardArea{
         width: 250px;
         font-size: 15px;
@@ -379,7 +389,7 @@
 
 @media(orientation: landscape) and (max-height: 370px){
     #bigCardArea{
-        width: 650px;
+        width: 600px;
         font-size: 15px;
     }
 
